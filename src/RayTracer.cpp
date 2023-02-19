@@ -3,6 +3,7 @@
 // all rights reserved
 
 #include "RayTracer.h"
+
 #include <stdio.h>
 
 #include <dxgi1_4.h>
@@ -1352,7 +1353,8 @@ void	RayTracer::render()
 		m_commandList->OMSetRenderTargets(1, &rtvHandle, FALSE, nullptr);
 		m_commandList->SetPipelineState(m_pipelineStatePathTrace);
 		
-		float blend= m_pathTraceFrameIdx/ (float)(m_pathTraceFrameIdx+1.0f);
+		
+		float blend= m_pathTraceFrameIdx / (float)(m_pathTraceFrameIdx+1.0f);
 		float blendFactor[4]= { blend, blend, blend, 0.0f};
 		m_commandList->OMSetBlendFactor(blendFactor);
 		m_commandList->DrawInstanced(4, 1, 0, 0);
